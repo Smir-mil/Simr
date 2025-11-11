@@ -589,11 +589,11 @@
     grid-template-columns: 1fr;
   }
 
-  .contact-form {
-    padding: 2rem;
-  }
-
-  .contact-layout {
+  .contact-layout-centered {
     gap: 2rem;
+  }
+  
+  .get-in-touch-card {
+    padding: 2.5rem 2rem;
   }
 }
