@@ -154,6 +154,7 @@
   height: 100vh;
   padding: 0 8rem;
   max-width: 1400px;
+  pointer-events: none;
 }
 
 .main-title {
@@ -166,6 +167,7 @@
   text-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
   animation: fadeInUp 1s ease-out;
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  pointer-events: none;
 }
 
 .main-description {
@@ -177,6 +179,7 @@
   margin-bottom: 3rem;
   animation: fadeInUp 1s ease-out 0.2s both;
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  pointer-events: none;
 }
 
 .glass-button {
@@ -197,6 +200,7 @@
   animation: fadeInUp 1s ease-out 0.4s both;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   width: fit-content;
+  pointer-events: all;
 }
 
 .glass-button:hover {
