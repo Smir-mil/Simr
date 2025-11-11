@@ -367,35 +367,86 @@
   padding-bottom: 100px;
   padding-left: 8rem;
   padding-right: 8rem;
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
+  min-height: calc(100vh - 240px);
+  display: flex;
+  align-items: center;
 }
 
-.contact-hero {
-  margin-bottom: 4rem;
-  text-align: center;
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  width: 100%;
+  align-items: start;
+}
+
+.contact-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .contact-main-title {
-  font-size: clamp(3rem, 7vw, 5rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   color: #ffffff;
   letter-spacing: -0.03em;
   line-height: 1.15;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
 }
 
 .contact-subtitle {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 400;
   color: #b0b0b0;
-  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.get-in-touch-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(24px);
+  padding: 2.5rem;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.get-in-touch-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(183, 148, 246, 0.3);
+  box-shadow: 0 12px 40px rgba(147, 112, 219, 0.3);
+}
+
+.touch-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.email-link {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #b794f6;
+  text-decoration: none;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.email-link:hover {
+  color: #c9adf7;
+  text-decoration: underline;
 }
 
 .contact-form {
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(24px);
-  padding: 3.5rem;
+  padding: 3rem;
   border-radius: 32px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 
