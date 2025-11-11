@@ -167,17 +167,14 @@ const About = () => {
           <h2 className="section-heading" data-testid="capabilities-heading">What We Deliver</h2>
           <div className="capabilities-grid">
             <div className="capability-card" data-testid="capability-1">
-              <div className="capability-icon">⚡</div>
               <h3 className="capability-title">Workflow Automation</h3>
               <p className="capability-desc">Eliminate manual processes and connect your tools seamlessly</p>
             </div>
             <div className="capability-card" data-testid="capability-2">
-              <div className="capability-icon">🤖</div>
               <h3 className="capability-title">AI-Powered Solutions</h3>
               <p className="capability-desc">Leverage intelligent systems for data processing and decision-making</p>
             </div>
             <div className="capability-card" data-testid="capability-3">
-              <div className="capability-icon">🔗</div>
               <h3 className="capability-title">Platform Integration</h3>
               <p className="capability-desc">Connect your entire tech stack for unified operations</p>
             </div>
