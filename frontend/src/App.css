@@ -537,6 +537,13 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
   .glass-nav {
     min-width: 90%;
@@ -569,5 +576,9 @@
 
   .contact-form {
     padding: 2rem;
+  }
+
+  .contact-layout {
+    gap: 2rem;
   }
 }
