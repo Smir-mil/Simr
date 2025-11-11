@@ -246,7 +246,7 @@ const Contact = () => {
       </nav>
 
       <div className="contact-content">
-        <div className="contact-layout">
+        <div className="contact-layout-centered">
           {/* Left Side - Contact Info */}
           <div className="contact-info-section">
             <h1 className="contact-main-title" data-testid="contact-title">
@@ -257,79 +257,16 @@ const Contact = () => {
             <p className="contact-subtitle" data-testid="contact-subtitle">
               Ready to transform your business with AI automation? Let's talk.
             </p>
-            
-            <div className="get-in-touch-card" data-testid="get-in-touch-card">
-              <h3 className="touch-card-title">Get in Touch</h3>
-              <a href="mailto:hello@simr.ai" className="email-link" data-testid="email-link">
-                hello@simr.ai
-              </a>
-            </div>
           </div>
 
-          {/* Right Side - Contact Form */}
-          <form className="contact-form" onSubmit={handleSubmit} data-testid="contact-form">
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <Input
-                id="name"
-                type="text"
-                placeholder="Your name"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
-                required
-                data-testid="contact-name-input"
-                className="glass-input"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="your.email@example.com"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
-                required
-                data-testid="contact-email-input"
-                className="glass-input"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <Textarea
-                id="message"
-                placeholder="Tell us about your automation needs..."
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
-                required
-                rows={6}
-                data-testid="contact-message-input"
-                className="glass-input"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="glass-submit-button"
-              data-testid="contact-submit-button"
-            >
-              Send Message
-            </button>
-
-            {submitted && (
-              <div className="success-message" data-testid="success-message">
-                Thank you! We'll get back to you soon.
-              </div>
-            )}
-          </form>
+          {/* Right Side - Get in Touch Card */}
+          <div className="get-in-touch-card" data-testid="get-in-touch-card">
+            <h3 className="touch-card-title">Get in Touch</h3>
+            <a href="mailto:hello@simr.ai" className="email-link-with-icon" data-testid="email-link">
+              <Mail className="email-icon" size={24} />
+              <span>hello@simr.ai</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
