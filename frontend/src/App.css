@@ -380,12 +380,12 @@
   align-items: center;
 }
 
-.contact-layout {
+.contact-layout-centered {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   width: 100%;
-  align-items: start;
+  align-items: center;
 }
 
 .contact-info-section {
@@ -413,51 +413,60 @@
 .get-in-touch-card {
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(24px);
-  padding: 2.5rem;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.get-in-touch-card:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(183, 148, 246, 0.3);
-  box-shadow: 0 12px 40px rgba(147, 112, 219, 0.3);
-}
-
-.touch-card-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-}
-
-.email-link {
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: #b794f6;
-  text-decoration: none;
-  display: block;
-  transition: color 0.3s ease;
-}
-
-.email-link:hover {
-  color: #c9adf7;
-  text-decoration: underline;
-}
-
-.contact-form {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(24px);
-  padding: 3rem;
+  padding: 3.5rem 3rem;
   border-radius: 32px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.get-in-touch-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(183, 148, 246, 0.3);
+  box-shadow: 0 16px 48px rgba(147, 112, 219, 0.4);
+  transform: translateY(-4px);
+}
+
+.touch-card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2.5rem;
+}
+
+.email-link-with-icon {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #b794f6;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  background: rgba(183, 148, 246, 0.05);
+}
+
+.email-link-with-icon:hover {
+  color: #c9adf7;
+  background: rgba(183, 148, 246, 0.15);
+  transform: scale(1.05);
+}
+
+.email-icon {
+  color: #b794f6;
+  transition: color 0.3s ease;
+}
+
+.email-link-with-icon:hover .email-icon {
+  color: #c9adf7;
 }
 
 .form-group {
