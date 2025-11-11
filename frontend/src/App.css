@@ -553,7 +553,7 @@
 }
 
 @media (max-width: 1024px) {
-  .contact-layout {
+  .contact-layout-centered {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
