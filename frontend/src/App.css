@@ -339,12 +339,6 @@
   box-shadow: 0 16px 48px rgba(147, 112, 219, 0.2);
 }
 
-.capability-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  filter: grayscale(0.3) brightness(1.2);
-}
-
 .capability-title {
   font-size: 1.5rem;
   font-weight: 700;
