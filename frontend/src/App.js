@@ -4,11 +4,20 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Calendar } from "@/components/ui/calendar";
 
 const Home = () => {
   const navigate = useNavigate();
   const [isClicked, setIsClicked] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const handleButtonClick = () => {
     setIsClicked(true);
@@ -19,6 +28,21 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      {/* Grid Background */}
+      <div className="grid-background">
+        <div className="grid-lines" />
+      </div>
+
+      {/* Mouse Glow Effect */}
+      <div
+        className="mouse-glow"
+        style={{
+          left: `${mousePosition.x}px`,
+          top: `${mousePosition.y}px`,
+        }}
+      />
+
+      {/* Spline Background */}
       <iframe
         src="https://my.spline.design/cloneronhoverlightning-NHFc47KkuhB6j8noifFxZN9t/"
         frameBorder="0"
@@ -27,9 +51,26 @@ const Home = () => {
         className="spline-background"
         title="Interactive Background"
       />
+
+      {/* Glass Navigation */}
+      <nav className="glass-nav">
+        <div className="nav-logo" data-testid="nav-logo">SIMR</div>
+        <div className="nav-links">
+          <button onClick={() => navigate("/about")} data-testid="nav-about" className="nav-link-btn">
+            About
+          </button>
+          <button onClick={() => navigate("/contact")} data-testid="nav-contact" className="nav-link-btn">
+            Contact
+          </button>
+        </div>
+      </nav>
+
+      {/* Main Content */}
       <div className="home-content">
         <h1 className="main-title" data-testid="main-title">
-          AI Automation Experts
+          AI Automation
+          <br />
+          Experts
         </h1>
         <p className="main-description" data-testid="main-description">
           We build intelligent automation systems that eliminate repetitive
@@ -40,7 +81,7 @@ const Home = () => {
           onClick={handleButtonClick}
           data-testid="hello-there-button"
         >
-          Hello There!
+          Explore
         </button>
       </div>
     </div>
@@ -49,182 +90,100 @@ const Home = () => {
 
 const About = () => {
   const navigate = useNavigate();
-  const [animationStep, setAnimationStep] = useState(0);
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [showPopup, setShowPopup] = useState(false);
-  const animationRef = useRef(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && animationStep === 0) {
-            startAnimation();
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
 
-    if (animationRef.current) {
-      observer.observe(animationRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [animationStep]);
-
-  const startAnimation = () => {
-    const steps = [
-      { step: 1, delay: 500 },
-      { step: 2, delay: 2000 },
-      { step: 3, delay: 3500 },
-      { step: 4, delay: 5000 },
-      { step: 5, delay: 6500 },
-      { step: 6, delay: 8000 },
-      { step: 7, delay: 9500 },
-    ];
-
-    steps.forEach(({ step, delay }) => {
-      setTimeout(() => setAnimationStep(step), delay);
-    });
-
-    setTimeout(() => {
-      setShowPopup(true);
-      setTimeout(() => setShowPopup(false), 3000);
-    }, 10000);
-  };
-
-  const bookedDates = [
-    new Date(2025, 0, 3),
-    new Date(2025, 0, 7),
-    new Date(2025, 0, 12),
-    new Date(2025, 0, 18),
-  ];
-
-  const isDateBooked = (date) => {
-    return bookedDates.some(
-      (bookedDate) =>
-        bookedDate.getDate() === date.getDate() &&
-        bookedDate.getMonth() === date.getMonth() &&
-        bookedDate.getFullYear() === date.getFullYear()
-    );
-  };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   return (
     <div className="about-container">
-      <nav className="nav-bar">
-        <div className="logo" onClick={() => navigate("/")}>
-          AI Automation Experts
+      {/* Grid Background */}
+      <div className="grid-background">
+        <div className="grid-lines" />
+      </div>
+
+      {/* Mouse Glow Effect */}
+      <div
+        className="mouse-glow"
+        style={{
+          left: `${mousePosition.x}px`,
+          top: `${mousePosition.y}px`,
+        }}
+      />
+
+      {/* Glass Navigation */}
+      <nav className="glass-nav">
+        <div className="nav-logo" onClick={() => navigate("/")} data-testid="nav-logo">
+          SIMR
         </div>
         <div className="nav-links">
-          <button onClick={() => navigate("/about")} data-testid="nav-about">
+          <button onClick={() => navigate("/about")} data-testid="nav-about" className="nav-link-btn">
             About
           </button>
-          <button onClick={() => navigate("/contact")} data-testid="nav-contact">
+          <button onClick={() => navigate("/contact")} data-testid="nav-contact" className="nav-link-btn">
             Contact
           </button>
         </div>
       </nav>
 
-      <section className="about-section intro-section">
-        <h2 className="section-title" data-testid="about-intro-title">
-          What We Do
-        </h2>
-        <p className="section-text" data-testid="about-intro-text">
-          We specialize in creating custom AI automation solutions that
-          transform how businesses operate. From intelligent chatbots that
-          handle customer inquiries 24/7 to automated workflow systems that
-          eliminate manual data entry, our solutions are designed to save time
-          and reduce operational costs.
-        </p>
-      </section>
+      <div className="about-content">
+        <section className="about-hero">
+          <h1 className="about-main-title" data-testid="about-main-title">
+            We automate the work
+            <br />
+            that drains your time.
+          </h1>
+        </section>
 
-      <section className="about-section capabilities-section">
-        <h2 className="section-title" data-testid="capabilities-title">
-          Our Impact
-        </h2>
-        <div className="capabilities-grid">
-          <div className="capability-card" data-testid="capability-hours">
-            <div className="capability-number">1,200+</div>
-            <div className="capability-label">Hours Saved Monthly</div>
+        <section className="about-intro-section">
+          <div className="intro-text" data-testid="about-intro">
+            <p className="intro-paragraph">
+              At <span className="brand-highlight">SIMR</span>, we build intelligent automation systems that eliminate repetitive tasks — so your team can focus on what truly drives growth. From workflow automation to data processing and AI-powered integrations, we make automation seamless, scalable, and powerful.
+            </p>
           </div>
-          <div className="capability-card" data-testid="capability-tasks">
-            <div className="capability-number">85%</div>
-            <div className="capability-label">Task Automation Rate</div>
-          </div>
-          <div className="capability-card" data-testid="capability-clients">
-            <div className="capability-number">50+</div>
-            <div className="capability-label">Happy Clients</div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="about-section demo-section" ref={animationRef}>
-        <h2 className="section-title" data-testid="demo-title">
-          See AI Automation in Action
-        </h2>
-        <div className="demo-container" data-testid="demo-container">
-          <div className="chat-interface">
-            {animationStep >= 1 && (
-              <div className="message customer-message fade-in" data-testid="message-1">
-                <div className="message-bubble">How much is this?</div>
-              </div>
-            )}
-            {animationStep >= 2 && (
-              <div className="message assistant-message fade-in" data-testid="message-2">
-                <div className="message-bubble">₹ 2,499</div>
-              </div>
-            )}
-            {animationStep >= 3 && (
-              <div className="message customer-message fade-in" data-testid="message-3">
-                <div className="message-bubble">
-                  Can you tell me the location? Maybe schedule an appointment?
-                </div>
-              </div>
-            )}
-            {animationStep >= 4 && (
-              <div className="message assistant-message fade-in" data-testid="message-4">
-                <div className="message-bubble">
-                  Sure! Please select a date from the calendar below:
-                </div>
-              </div>
-            )}
-            {animationStep >= 5 && (
-              <div className="calendar-container fade-in" data-testid="calendar-container">
-                <Calendar
-                  mode="single"
-                  selected={selectedDate}
-                  onSelect={(date) => {
-                    if (date && !isDateBooked(date)) {
-                      setSelectedDate(date);
-                      setAnimationStep(6);
-                    }
-                  }}
-                  disabled={(date) => isDateBooked(date) || date < new Date()}
-                  className="demo-calendar"
-                  defaultMonth={new Date(2025, 0, 1)}
-                />
-              </div>
-            )}
-            {animationStep >= 6 && selectedDate && (
-              <div className="message assistant-message fade-in" data-testid="message-5">
-                <div className="message-bubble">
-                  Sure, Your Appointment is Scheduled for{" "}
-                  {selectedDate.getDate()} January and Other details will be sent
-                  to your Mail!
-                </div>
-              </div>
-            )}
-          </div>
-          {showPopup && (
-            <div className="success-popup" data-testid="success-popup">
-              <div className="popup-content">
-                <div className="popup-text">Get Fast, Get Faster</div>
-              </div>
+        <section className="mission-section">
+          <h2 className="section-heading" data-testid="mission-heading">Our Mission</h2>
+          <p className="section-text" data-testid="mission-text">
+            Our mission is simple: to give businesses back their most valuable resource — time.
+          </p>
+        </section>
+
+        <section className="approach-section">
+          <h2 className="section-heading" data-testid="approach-heading">Our Approach</h2>
+          <p className="section-text" data-testid="approach-text">
+            We combine cutting-edge AI tools with deep process understanding to design solutions that work for your operations, not against them. Whether you're looking to streamline lead management, automate reports, or integrate multiple platforms, we'll craft a custom automation that fits perfectly into your business.
+          </p>
+        </section>
+
+        <section className="capabilities-showcase">
+          <h2 className="section-heading" data-testid="capabilities-heading">What We Deliver</h2>
+          <div className="capabilities-grid">
+            <div className="capability-card" data-testid="capability-1">
+              <div className="capability-icon">⚡</div>
+              <h3 className="capability-title">Workflow Automation</h3>
+              <p className="capability-desc">Eliminate manual processes and connect your tools seamlessly</p>
             </div>
-          )}
-        </div>
-      </section>
+            <div className="capability-card" data-testid="capability-2">
+              <div className="capability-icon">🤖</div>
+              <h3 className="capability-title">AI-Powered Solutions</h3>
+              <p className="capability-desc">Leverage intelligent systems for data processing and decision-making</p>
+            </div>
+            <div className="capability-card" data-testid="capability-3">
+              <div className="capability-icon">🔗</div>
+              <h3 className="capability-title">Platform Integration</h3>
+              <p className="capability-desc">Connect your entire tech stack for unified operations</p>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 };
@@ -237,6 +196,16 @@ const Contact = () => {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -249,27 +218,46 @@ const Contact = () => {
 
   return (
     <div className="contact-container">
-      <nav className="nav-bar">
-        <div className="logo" onClick={() => navigate("/")}>
-          AI Automation Experts
+      {/* Grid Background */}
+      <div className="grid-background">
+        <div className="grid-lines" />
+      </div>
+
+      {/* Mouse Glow Effect */}
+      <div
+        className="mouse-glow"
+        style={{
+          left: `${mousePosition.x}px`,
+          top: `${mousePosition.y}px`,
+        }}
+      />
+
+      {/* Glass Navigation */}
+      <nav className="glass-nav">
+        <div className="nav-logo" onClick={() => navigate("/")} data-testid="nav-logo">
+          SIMR
         </div>
         <div className="nav-links">
-          <button onClick={() => navigate("/about")} data-testid="nav-about">
+          <button onClick={() => navigate("/about")} data-testid="nav-about" className="nav-link-btn">
             About
           </button>
-          <button onClick={() => navigate("/contact")} data-testid="nav-contact">
+          <button onClick={() => navigate("/contact")} data-testid="nav-contact" className="nav-link-btn">
             Contact
           </button>
         </div>
       </nav>
 
-      <section className="contact-section">
-        <h2 className="section-title" data-testid="contact-title">
-          Get in Touch
-        </h2>
-        <p className="contact-subtitle" data-testid="contact-subtitle">
-          Ready to transform your business with AI automation? Let's talk.
-        </p>
+      <div className="contact-content">
+        <section className="contact-hero">
+          <h1 className="contact-main-title" data-testid="contact-title">
+            Let's Build Something
+            <br />
+            Extraordinary
+          </h1>
+          <p className="contact-subtitle" data-testid="contact-subtitle">
+            Ready to transform your business with AI automation? Let's talk.
+          </p>
+        </section>
 
         <form className="contact-form" onSubmit={handleSubmit} data-testid="contact-form">
           <div className="form-group">
@@ -284,6 +272,7 @@ const Contact = () => {
               }
               required
               data-testid="contact-name-input"
+              className="glass-input"
             />
           </div>
 
@@ -299,6 +288,7 @@ const Contact = () => {
               }
               required
               data-testid="contact-email-input"
+              className="glass-input"
             />
           </div>
 
@@ -314,16 +304,17 @@ const Contact = () => {
               required
               rows={6}
               data-testid="contact-message-input"
+              className="glass-input"
             />
           </div>
 
-          <Button
+          <button
             type="submit"
-            className="submit-button"
+            className="glass-submit-button"
             data-testid="contact-submit-button"
           >
             Send Message
-          </Button>
+          </button>
 
           {submitted && (
             <div className="success-message" data-testid="success-message">
@@ -331,7 +322,7 @@ const Contact = () => {
             </div>
           )}
         </form>
-      </section>
+      </div>
     </div>
   );
 };

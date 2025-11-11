@@ -44,7 +44,7 @@ class ContactSubmissionCreate(BaseModel):
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
-    return {"message": "AI Automation Experts API"}
+    return {"message": "SIMR - AI Automation Experts API"}
 
 @api_router.post("/contact", response_model=ContactSubmission)
 async def submit_contact(input: ContactSubmissionCreate):
