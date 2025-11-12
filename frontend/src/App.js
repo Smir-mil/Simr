@@ -6,10 +6,26 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail } from "lucide-react";
 
+const ChatPopup = ({ open, onClose }) => {
+  if (!open) return null;
+  return (
+    <div className="chat-popup">
+      <div className="chat-header">
+        <span>Chat</span>
+        <button onClick={onClose} className="chat-close">×</button>
+      </div>
+      <div className="chat-body">
+        <p>Chat feature coming soon!</p>
+      </div>
+    </div>
+  );
+};
+
 const Home = () => {
   const navigate = useNavigate();
   const [isClicked, setIsClicked] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [chatOpen, setChatOpen] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -42,6 +58,13 @@ const Home = () => {
           top: `${mousePosition.y}px`,
         }}
       />
+
+      <div className="chat-widget">
+        <button className="chat-button" onClick={() => setChatOpen(true)}>
+          Hello!
+        </button>
+      </div>
+      <ChatPopup open={chatOpen} onClose={() => setChatOpen(false)} />
 
       {/* Spline Background */}
       <iframe
