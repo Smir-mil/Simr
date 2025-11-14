@@ -68,7 +68,7 @@ const Home = () => {
 
       {/* Spline Background */}
       <iframe
-        src="https://my.spline.design/cloneronhoverlightning-NHFc47KkuhB6j8noifFxZN9t/"
+        src="https://my.spline.design/star-59TBAzCiwUMzweHCbFhknUJ4/"
         frameBorder="0"
         width="100%"
         height="100%"
